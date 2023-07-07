@@ -1,0 +1,39 @@
+﻿
+
+
+@model IEnumerable<CL2.Models.Producto>
+
+
+
+
+@{
+    ViewData["Title"] = "ListadoPorFecha";
+}
+
+
+
+
+<h1>Listado por Fechas</h1>
+
+
+
+
+
+<form action="/Producto/ListaPorDosFec">
+
+    <label>fecha 1:</label>
+
+    <input type="date" name="fecOne" />
+    <br />
+
+
+
+    <button type="submit">Buscar</button>
+
+
+
+
+
+
+</form>
+

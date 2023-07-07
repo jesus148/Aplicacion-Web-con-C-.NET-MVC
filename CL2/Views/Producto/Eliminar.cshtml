@@ -1,0 +1,93 @@
+﻿@model CL2.Models.Producto
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar</h1>
+
+<h3>estas seguro de eliminar esto ?</h3>
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Idtipo)
+        </dt>
+
+
+@*       FORMA NORMAL DE MOSTRA EL IDTIPO
+    <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Idtipo)
+        </dd>*@
+
+
+        <div class="col-sm-2">
+            
+
+
+            <!-- 1 forma de combo usando visual-->
+            @* es lo mismo de abajo como una lista*@
+            <!-- "IdTipo" : es el atributo de esta clase debe ser igual o el atributo del combo
+                SelectList trae toda la estructura y lo almacena aqui
+                ViewBag.tipos : tipos debe ser el array  igual escrito al rray del controller
+            -->
+            @Html.DropDownList("Idtipo",ViewBag.tipos as SelectList)
+
+
+
+            <!-- 2 forma de combo -->
+            <!--         <select name="IdTipo">
+                         <option value="1" selected>Corporativo</option>
+                         <option value="2">Usual</option>
+                         <option value="3">Otro</option>
+                          </select>-->
+
+
+            <span asp-validation-for="Idtipo" class="text-danger"></span>
+        </div>
+
+
+
+
+    </dl>
+    
+    <form asp-action="Eliminar">
+        <input type="hidden" value="@Model.Id" name="id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+
+    </form>
+
+
+
+    <div>
+        <p>@ViewBag.mensaje</p>
+        <a asp-action="ListadoTotal">Volver al listado</a>
+    </div>
+
+
+</div>

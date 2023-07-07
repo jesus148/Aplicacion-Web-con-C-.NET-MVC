@@ -1,0 +1,92 @@
+﻿@model CL2.Models.Producto
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar</h1>
+
+<h4>Producto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+
+          @*      FORMA NORMAL DE PRESENTAR IDTIPO (INT)
+               
+         <div class="form-group">
+                <label asp-for="Idtipo" class="control-label"></label>
+                <input asp-for="Idtipo" class="form-control" />
+                <span asp-validation-for="Idtipo" class="text-danger"></span>
+            </div>   *@
+
+
+            <div class="form-group">
+                <label asp-for="Idtipo" class="control-label">Tipo</label>
+
+
+
+                <!-- 1 forma de combo usando visual-->
+                @* es lo mismo de abajo como una lista*@
+                <!-- "IdTipo" : es el atributo de esta clase debe ser igual o el atributo del combo
+                    SelectList trae toda la estructura y lo almacena aqui
+                    ViewBag.tipos : tipos debe ser el array  igual escrito al rray del controller
+                -->
+                @Html.DropDownList("Idtipo",ViewBag.tipos as SelectList)
+
+
+
+                <!-- 2 forma de combo -->
+                <!--         <select name="IdTipo">
+                             <option value="1" selected>Corporativo</option>
+                             <option value="2">Usual</option>
+                             <option value="3">Otro</option>
+                              </select>-->
+
+
+                <span asp-validation-for="Idtipo" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input type="file" name="Foto" class="form-control" />
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <p>@ViewBag.mensaje</p>
+    <a asp-action="ListadoTotal">Volver al listado</a>
+</div>
+

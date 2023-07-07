@@ -1,0 +1,94 @@
+﻿@model IEnumerable<CL2.Models.Producto>
+
+@{
+    ViewData["Title"] = "ListadoTotal";
+}
+
+<h1>   Listado total de Productos</h1>
+
+
+
+
+
+<p>
+    <a asp-action="Crear">Crear un nuevo Producto</a>
+</p>
+
+
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+      
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idtipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+    
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idtipo)
+                </td>
+
+
+                <td>
+                    <!-- debe ser una etiqueta img
+                        wwwroot > imagenes > redmayne  : ruta de la foto
+                        src="Url.Content(item.Foto)" : con esto ingresa a paquete imagenes y poner
+                        item.Foto : atributo foto igual a la clase guia
+                        ADEMAS EN la bd poner ~
+                        set foto='~/imagenes/Redmayne.jpg'
+                    -->
+                    <img src="@Url.Content(item.Foto)" style="width:50px;height:50px;border:1px solid;">
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+            <td>
+                    @Html.ActionLink("Editar  producto", "Editar", new { Id=item.Id  }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Eliminar Producto", "Eliminar", new {  Id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
